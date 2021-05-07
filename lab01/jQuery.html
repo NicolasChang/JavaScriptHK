@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+body{
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: aliceblue;
+    line-height: 1.5em;
+}
+header{
+    background-color: brown;
+    color: yellow;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+#container{
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+}
+    </style>
+</head>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    jQuery(document).ready(function(){
+
+    }) -->
+</script>
+
+<body>
+    <header>
+        <h1>jQuery</h1>
+    </header>
+        <div id="container" class="">
+           <h3 id="target">Hello Nicolas</h3>
+           <h3 id="target">Hello Nicolas</h3>
+           <h3 id="target">Hello Nicolas</h3>
+           <hr>
+           <h3 id="jq">Hello Backy</h3>
+           <h3 id="jq">Hello Backy</h3>
+           <h3 id="jq">Hello Backy</h3>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // JavaScript
+            let targetAll=document.querySelectorAll('#target')
+            console.log(targetAll)
+            for(let i=0;i<targetAll.length;i++){
+                targetAll[i].addEventListener('mouseenter',function(){
+                    targetAll[i].style.color='red'
+                })
+                targetAll[i].addEventListener('mouseleave',function(){
+                    targetAll[i].style.color='black'
+                })
+            }
+
+            let target=document.querySelector('#target')
+            console.log(target)
+            target.addEventListener('mouseenter',function(){
+                this.style.color='red'
+            })
+            target.addEventListener('mouseleave',function(){
+                this.style.color='black'
+            })
+        // jQuery
+        // jQuery(document).ready(function(){})
+        $(function(){
+
+            let Kevin='lll'
+        $('h3#jq').on('mouseenter',function(){
+            $(this).css('color','green')
+        }).on('mouseleave',function(){
+            $(this).css('color','black')
+        })
+
+    })
+
+
+    </script>
+
+
+    </header>
+    
+</body>
+</html>

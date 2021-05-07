@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            transition: .5s;
+        }
+        .box.active{
+            background-color: aquamarine;
+            border-radius: 50%;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>jQuery test</h1>
+    </header>
+    <div id="container">
+        <h3 id="source">Hello Backy</h3>
+        <h3 id='target'></h3>
+        <button id="getText">get text</button>
+        <button id="setText">set text</button>
+        <hr>
+        <p><b>click</b> to change the <span>html</span></p>
+        <button id="setHtml">set <html></html></button>
+        <hr>
+        <img id="img1" src="/lab09/img/Jimmy.jpg" alt="Jimmy">
+        <button id="getAttr">get Attr</button>
+        <button id="setAttr">set Attr</button>
+        <a id="link" href="https://google.com" title="google">google</a>
+        <button id="setLink">setLink</button>
+        <hr>
+        <button id="getProp">get prop</button>
+        <button id="setProp">set prop</button>
+        <br>
+        <input type="checkbox" id="checkbox" >同意條款
+        <br>
+        <button id="confirm" disabled>confirm</button>
+        <hr>
+        <button id="add">add class</button>
+        <button id="remove">remove class</button>
+        <button id="toggle">toggle class</button>
+        <br>
+        <div class="box"></div>
+
+
+    </div>
+    <div>
+        <script src="/jquery-3.6.0.js"></script>
+        <script>
+            $(function(){
+                $('#add').on('click',function(){
+                    $('.box').addClass('active')
+                })
+                $('#remove').on('click',function(){
+                    $('.box').removeClass('active')
+                })
+                $('#toggle').on('click',function(){
+                    $('.box').toggleClass('active')
+                })
+                
+                $('#getProp').on("click",function(){
+                    console.log($('#checkbox').prop('checked'))
+                })
+                $('#setProp').on("click",function(){
+                   $('#checkbox').prop('checked',true)
+                })
+                $('#checkbox').on("click",function(){
+                    let checked=$(this).prop('checked')
+                    console.log(checked)
+                    if(checked){
+                        $('#confirm').prop('disabled',false)
+                    }else{
+                        $('#confirm').prop('disabled',true)
+
+                    }
+                })
+
+
+                $('#setLink').on('click',function(){
+                    $('#link').attr({
+                        "href":"https://google.com",
+                        "title":"google"
+                    }).text("google")
+                })
+
+
+                $('#getAttr').on('click',function(){
+                    console.log($("src:"+('#img1').attr('src')+" ,alt:"+$('#img1').attr('alt')))
+                })
+                $('#setAttr').on('click',function(){
+                    $('#img1').attr({
+                    'src':'/lab09/img/大G.jpeg',
+                    "alt":"GGG"
+                })
+                })
+
+
+                $('#getText').on('click',function(){
+                    let text=$('#source').text()
+                    $('#target').text(text)
+                })
+                $('#setText').on('click',function(){
+                    $('#source').text('set jQuery')
+                })
+                $('p').one('click',function(){
+                    let html=$('p').html()
+                    $(this).text(html)
+                })
+                $('#setHtml').on('click',function(){
+                    $('p').html('<h1>set html</h1>')
+                })
+
+
+            })
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        div.img{
+            width: 400px;
+            height: 300px;
+
+
+        }
+        img{
+            width: 400px;
+            height: 310px;
+            position: absolute;
+            
+        }
+        .con{
+            width: 100px;
+            height: 100px;
+            overflow: auto;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+        .progress{
+            background-color: green;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+        }
+        .progress-percent{
+            height: 30px;
+            background-color: coral;
+            width: 0%;
+        }
+        body{
+            height: 300vh;
+        }
+        #btn{
+            position: fixed;
+            bottom: 10px;
+
+            
+        }
+        p{
+            margin: 10px;
+            padding: 5px;
+            border: 2px solid black;
+            width: 600px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color: greenyellow;">Jimmy Point</h1>
+        <h3>jQuery Resizr & scroll</h3>
+    </header>
+    <div class="progress">
+        <div class="progress-percent"></div>
+    </div>
+    <div id="container">
+        <p id="width">jQuery innerWidth() outerWidth() outerWidth(true)</p>
+        <p id="target"></p>
+
+
+
+        <hr>
+        <div class="con">
+            <div class="box"></div>
+        </div>
+        <hr>
+        <div class="img">
+            <img src="/lab09/img/Jimmy.jpg">
+        </div>
+        <button id="btn">go top</button>
+        
+
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            let p=$('p#width')
+            $('p#target').text(`innerWidth:${p.innerWidth()},outerWidth${p.outerWidth()},outWidth(true)`)
+            $('#btn').click(function(){
+                $(window).scrollTop(0)
+            })
+            let offset=p.offset()
+            $('p#target2').text(`left:${offset.left},top${offset.top}`)
+
+            
+            $(window).scroll(function(){
+                let pageHeight=$('body').height()
+                let winHeight=$(window).height()
+                $(window).scroll(function(){
+                    let scrollTop=$(this).scrollTop()
+                    console.log('scrollTop:'+screenTop+'win:'+winHeight+'body:'+pageHeight)
+                   let scrollPercent=Math.round((scrollTop/(pageHeight-winHeight))*100)+'%'
+                   $('.progress-percent').css('width',scrollPercent)
+                })
+            })
+            $('.con').scroll(function(){
+                console.log('top:'+$(this).scrollTop()+',left:'+$(this).scrollLeft())
+            })
+            $(window).resize(function(){
+                console.log('resize')
+                console.log('width:'+$(this).width()+',height:'+$(this).height())
+            })
+            $(window).resize(move_div)
+            function move_div(){
+                let winWidth=$(this).width()
+                let winHeight=$(this).height()
+                let divWidth=$('.img').width()
+                let divHeight=$('.img').height()
+
+                let left=(winWidth-divWidth)/2
+                let top=(winHeight-divHeight)/2
+                
+                $('.img').css('left',left).css('top',top)
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

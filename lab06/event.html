@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        .div1{
+            height: 100px;
+            width: 500px;
+            padding: 10px;
+            border: 1px solid blue;
+            background-color: lightblue;
+        }
+        p{
+            background-color: pink;
+
+        }
+        span{
+            background-color: greenyellow;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<header>
+    <h1>Event</h1>
+</header>
+<div id="container">
+    <input id="input" type="text" placeholder="請輸入">
+    <hr>
+    <a href="https://google.com/">google.com</a>
+    <div id="target"></div>
+    <hr>
+    <div class="div1">
+        <div> element</div><p>p element<span>span element</span></p>
+    </div>
+
+</div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $('span').click(function(){
+                console.log('123 this is span clicked')
+            })
+            $('p').click(function(){
+                console.log('123 this is p clicked')
+            })
+            $('div').click(function(){
+                console.log('123 this is div clicked')
+            })
+
+
+
+
+            $('a').click(function(){
+
+                $('#target').append(`default ${event.type}prevented`)
+                .appendTo('#target')
+            })
+
+            $('#input').click(function(event){
+                console.log(event.type)
+                console.log(event.which)
+                
+            })
+
+            $('#input').on('click',function(){
+                console.log("on "+event.type)
+                console.log("on "+event.which)
+            })
+
+            $('#input').keypress(function(event){
+                console.log(event.type)
+                console.log(event.which)
+            })
+            $('#input').mousemove(function(event){
+                console.log("on "+event.type)
+                console.log("on "+event.which)
+                console.log(`pageX=${event.pageX}`+`pageY=`+event.pageY)
+                console.log(event.target)
+
+            })
+
+
+
+
+        })
+
+
+
+    </script>
+    
+</body>
+</html>

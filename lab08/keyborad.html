@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>jQuery Keyboard Event</h1>
+
+
+    </header>
+    <div id="container">
+        <form action="">
+            <input type="text" placeholder="請輸入" id="input">
+            <br>
+            <div>
+            <input id="cardInput" type="text" maxlength="4"><br>
+            </div>
+            <div>
+            <input id="cardInput" type="text" maxlength="4"><br>
+            </div>
+            <div>
+            <input id="cardInput" type="text" maxlength="4"><br>
+            </div>
+            <div>
+            <input id="cardInput" type="text" maxlength="4"><br>
+            </div>
+    
+            
+        </form>
+        <h3 id="target"></h3>
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // form event
+            $('input').focus(function(){
+                console.log('focus')
+            })
+            $('input#cardInput').keyup(function(){
+                let contentLen=$(this).val().length
+                console.log(contentLen)
+                if(contentLen==4){
+                    $(this).next().find(':input').focus()
+                    
+                }
+            })
+            $('#input').keypress(function(){
+                // console.log=('keypress')
+                // let val=$(this).val()
+                // $('#target').text(val)
+            })
+            $('#input').keyup(function(){
+                // console.log=('keyup')
+                // let val=$(this).val()
+                // $('#target').text(val)
+            })
+            $('#input').keydown(function(){
+                console.log=('keydown')
+                let val=$(this).val()
+                $('#target').text(val)
+            })
+        })
+        
+
+    </script>
+
+    
+</body>
+</html>

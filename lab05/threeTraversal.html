@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>new*5</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<style>
+    #table1{
+        border: 2px solid black;
+        width: 500px;
+        height: 500px;
+        margin: auto;
+    }
+    #table1 tr td{
+        border: 1px solid black;
+    }
+    #box{
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: pink;
+        margin: 5px;
+        margin: auto;
+    }
+    #box2{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: darkmagenta;
+        display: inline-block;
+    }
+</style>
+<body>
+    <header>
+        <h1>Three Traversal</h1>
+    </header>
+    <div id="container">
+        <table id="table1">
+<tr>
+    <td>
+        <div id="box">
+            <div id="box2"></div>
+        </div>
+    </td>
+    <td></td>
+    <td class="stop">stop</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+    <td><div id="box"></div></td>
+    <td></td>
+    <td></td>
+    <td class="stop">stop</td>
+</tr>
+<tr>
+    <td></td>
+    <td class="stop">stop</td>
+    <td><div id="box"></div></td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+    <td class="stop">stop</td>
+    <td></td>
+    <td><div id="box"></div></td>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td class="stop">stop</td>
+    <td></td>
+    <td><div id="box"></div></td>
+</tr>
+
+        </table>
+
+
+
+
+    </div>
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <script>
+        $(function(){
+        $('td').on('click',function(){
+            // $(this).children('#box').css('background','yellow')
+            // $(this).find('#box2').css('background','greenyellow')
+            // $(this).nextAll().css('background','lightblue')
+            // $(this).nextUntil('.stop').css('background','lightblue')
+            $(this).prev().css('background','lightgreen')
+            // $(this).prevAll().css('background','lightgreen')
+            // $(this).prevUntil('.stop').css('background','lightgreen')
+            // $(this).css('background','none')
+            // $(this).next().css('background','lightblue')
+            // $(this).prev().css('background','lightgreen')
+            
+            // $(this).css('background','none')
+            // .next().css('background','lightblue')
+            // .prev().prev().css('background','lightgreen')
+
+            // $(this).css('background','none')
+            // .next().css('background','lightblue')
+            // .end.prev().prev().css('background','lightgreen')
+            // siblings()
+            $(this).css('background','none')
+            .siblings().css('background','pink')
+
+            
+        })
+        $('div#box').on('click',function(){
+            $(this).parent().parent().css('background','greenyellow')
+            console.log($(this).parent())
+
+            $(this).closest('td').css('background','blue')
+            
+
+        })
+
+    })
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New New Example</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <hi>Who are you guys?</hi>
+
+    </header>
+    <div id="container">
+        <form acction="">
+            <h3>Form 1</h3>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="this is text">
+            <br>
+            <label for="gender">Name</label>
+            <input type="radio" name="gender" id="gender" checked>Male
+            <input type="radio" name="gender" id="gender" disabled>Female
+            <br>
+            <label for="habbit">Habbit(checkbox)</label>
+            <input type="checkbox" name="habbit" id="habbit" value="movie" >movie
+            <input type="checkbox" name="habbit" id="habbit" value="sport" checked>sport
+            <input type="checkbox" name="habbit" id="habbit" value="game" >game
+            <br>
+            <label for="city">CITY</label>
+            <select  name="city" id="city">
+                <option value="TPE">TAIPEI</option>
+                <option value="TYO">TOKYO</option>
+                <option value="NY">NEW YORK</option>
+            </select>
+            <br>
+            <textarea name="textarea" id="textarea" cols="30" rows="10">Where are you from?</textarea>
+
+        </form>
+        <hr>
+        <input type="button" id="btn" value=":button">
+        <input type="button" id="input" value=":input">
+
+
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $('#btn').on('click',function(){
+                $(':button').css('background','green')
+            })
+            $('#input').on('click',function(){
+                $(':input').css('background','pink')
+            })
+            
+            console.log($(':checked'))
+            
+            console.log($(':disabled'))
+
+            // $(':disabled')
+            $('#city').on('change',function(){
+                console.log($(':selected'))
+            })
+
+        })
+
+    </script>
+    
+</body>
+</html>

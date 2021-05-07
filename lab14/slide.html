@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <style>
+        .wrap{
+            width: 800px;
+            height: 400px;
+            background-color: black;
+            margin:0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .slide-imgs {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            /* 水平排列 */
+            display: flex;
+            position: absolute;
+            width: 3200px;
+            /* left: -0px; */
+
+        }
+        .slide-imgs li{
+            width: 800px;
+            height: 500px;
+            flex: 1 0 0 ;
+        }
+        .slide-imgs li img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .pages{
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            list-style: none;
+            bottom: 10px;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+        .pages li{
+            border: 1px solid white;
+            /* background-color: white; */
+            width: 30px;
+            height: 10px;
+            margin: 0 5px;
+        }
+        .pages li:hover{
+            background-color: white;
+        }
+        a.slide-arrow{
+            position: absolute;
+            color: white;
+            /* background-color:tomato; */
+            /* z軸 */
+            z-index: 10;
+            width: 40px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: .6;
+        }
+        .slide-arrow:hover{
+            opacity: 1;
+        }
+        .right{
+            right: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Slide Ad</h1>
+    </header>
+    <div id="container">
+        <div class="wrap">
+            <a class="slide-arrow right" id="slideNext"><i class="fas fa-angle-double-right"></i></a>
+            <a class="slide-arrow " id="slidePrev"><i class="fas fa-angle-double-left"></i></a>
+            <ul class="slide-imgs" id="slideImg">
+                <li><img src="/lab14/img/Jimmy.jpg"></li>
+                <li><img src="/lab14/img/T1.jpg"></li>
+                <li><img src="/lab14/img/大G.jpeg"></li>
+                <li><img src="/lab14/img/美.jpg"></li>
+            </ul>
+            <ul class="pages" id="pages">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+        </div>
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            let slideIndex=0;
+            let slideMove=0;
+            // 第一個分頁變白色
+            $('#pages li').eq(0).css('background','white')
+            $('#pages li').on('mouseenter',function(){
+                // $('#slideImg').css('left','-800px')
+                // let index = $(this).index()
+                // console.log(index)
+                // let slideMove=0-800*index
+                slideIndex = $(this).index()
+                slideMove=0-800*slideIndex
+                $('#slideImg').css('left',slideMove)
+                // 分頁顏色
+                $(this).css('background','white')
+                .siblings('background','transparent')
+            })
+            let slideCount=$('#slideImg li').length
+            $('#slideNext').on('click',function(){
+                console.log('next')
+                // 區域變全域
+                slideIndex++
+                console.log(slideIndex)
+                // slideMove=0-800*slideIndex
+                // $('#slideImg').css('left',slideMove)
+                // $('#pages li').eq(slideIndex).css('background','white')
+                // .siblings().css('background','transparent')
+
+                if(slideIndex>=slideCount){
+                    slideIndex=0;
+                    moveImg()
+                }
+            })
+            $('#slidePrev').on('click',function(){
+                console.log('prev')
+                slideIndex--
+                if(slideIndex<slideCount){
+                    slideIndex=slideCount-1;
+                }
+                // console.log(slideIndex)
+                // slideMove=0-800*slideIndex
+                // $('#slideImg').css('left',slideMove)
+                // $('#pages li').eq(slideIndex).css('background','white')
+                // .siblings().css('background','transparent')
+                moveImg()
+
+            })
+            function moveImg(){
+                slideMove=0-800*slideIndex
+                $('#slideImg').css('left',slideMove)
+                $('#pages li').eq(slideIndex).css('background','white')
+                .siblings().css('background','transparent')
+
+
+
+            }
+
+        })
+    </script>
+    
+    
+</body>
+</html>

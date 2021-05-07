@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<style>
+    table {
+        border: 2px solid black;
+        width: 400px;
+        height: 400px;
+        margin: 10 auto;
+    }
+
+    tr td {
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>New Example</h1>
+    </header>
+    <div id="container">
+        <div id="text">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, corporis obcaecati, nemo dolorum
+                repudiandae cumque, ipsa atque explicabo nesciunt repellendus tempora corrupti laborum similique natus
+                voluptatibus! Pariatur, error. Ratione, modi!</p>
+        </div>
+        <ul id="list1">
+            <li>List Item</li>
+            <li>List Item</li>
+            <li>List Item</li>
+            <li>List Item</li>
+            <li>List Item</li>
+            <li>List Item<span>Hina</span></li>
+            <li>List Item</li>
+            <li>List Item</li>
+        </ul>
+
+
+        <table id="table1">
+            <tr>
+                <td></td>
+                <td class="not"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // child filter selector
+            $('td:first-child').css('background','pink')
+            $('td:last-child').css('background','blue')
+            // :nth-child(n) n從一開始
+            $('td:nth-child(1)').css('background','greenyellow')
+            $('td:only-child').text('alone')
+
+            // filtering selector
+            $('li').first().css('background','lightgreen')
+            // .eq(n) n從0開始
+            $('li').eq(2).css('background','lightblue')
+            // last
+            $('li').first().css('background','greenyellow')
+            // .has
+            $('li').has('span').css('background','orange')
+            // .not()
+            // $('li').not('.not').css('background','yellow')
+            // .lt() .gt()
+            $('li').on('click',function(){
+                if($(this).is(':odd')){
+                    $(this).css('background','green').text('123')
+                }
+            })
+
+            
+
+
+            // Basic Filter
+            // :eq(n) n從0開始
+            // $('li:eq(1),td:eq(1)').css('background','pink')
+            // $('li:even,td:odd').css('background','lightgreen')
+            // // :lt 小於
+            // $('li:lt(4),td:lt(4)').css('background','yellow')
+            // // :gt 大於
+            // $('li:gt(5),td:gt(5)').css('background','lightblue')
+            // // first
+            // $('li:first,td:first').css('background','red')
+            // // last
+            // $('li:last,td:last').css('background','black')
+            // // :not(selector)--除了它以外的都變顏色
+            // $('li:not(.not),td:not(.not)').css('background','orange')
+
+            
+
+            
+            console.log($('*'))
+            conslle.log($('div'))
+            conslle.log($('table'))
+            // id #
+            conslle.log($('#table1'))
+            // class . 
+            conslle.log($('.p1'))
+
+        })
+    </script>
+</body>
+
+</html>

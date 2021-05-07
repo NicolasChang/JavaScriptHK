@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+    <header>
+        <h1>append</h1>
+    </header>
+    <div id="container">
+        <button id="append">append data</button>
+        <button id="prepend">prepend data</button>
+        <button id="appendTo">appendTo data</button>
+        <button id="prependTo">prependTo data</button>
+        <button id="after">after data</button>
+        <button id="before">before data</button>
+        <button id="insertAfter">insertAfter data</button>
+        <button id="insertBefore">insertBefore data</button>
+
+        <table>
+            <tbody>
+                <tr id="move">
+                    <td>0 Nicolas</td>
+                    <td>Nicolas@gmail.com</td>
+                    <td>0930121212</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            let i=1;
+            $('#insertAfter').on('click',function(){
+                $(`<tr>
+                <td>${i} insertAfter</td>
+                <td>insertAfter@gmail.com</td>
+                <td>0930121212</td>
+                </tr>
+                `).insertAfter('#move')
+                i++
+            })
+            $('#insertBefore').on('click',function(){
+                $(`<tr>
+                <td>${i} insertBefore</td>
+                <td>insertBefore@gmail.com</td>
+                <td>0930121212</td>
+                </tr>
+                `).insertBefore('#move')
+                i++
+            })
+
+
+
+
+
+
+            $('#after').on('click',function(){
+                $('#move').after(
+                `<tr>
+                <td>${i} after</td>
+                <td>after@gmail.com</td>
+                <td>0930121212</td>
+                </tr>
+                `
+                );
+                i++
+            })
+            $('#before').on('click',function(){
+                $('#move').before(
+                `<tr>
+                <td>${i} before</td>
+                <td>before@gmail.com</td>
+                <td>0930121212</td>
+                </tr>
+                `
+                );
+                i++
+            })
+                
+
+
+            $('#appendTo').on('click',function(){
+                $('#move').appendTo('tbody')
+            })
+            $('#prependTo').on('click',function(){
+                $('#move').prependTo('tbody')
+
+            })
+            $('#append').on('click',function(){
+                let content=`<tr>
+                <td>${i} append</td>
+                <td>append@gmail.com</td>
+                <td>0930121212</td>
+                </tr>
+                `
+                $('tbody').append(content)
+                i++;
+            })
+            $('#prepend').on('click',function(){
+                let content=`<tr>
+                <td>${i} prepend</td>
+                <td>prepend@gmail.com</td>
+                <td>0930121212</td>
+                </tr>
+                `
+                $('tbody').prepend(content)
+                i++;
+            })
+
+
+        })
+    </script>
+    
+</body>
+</html>

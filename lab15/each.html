@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        table{
+            border: 2px black;
+        }
+        table tr td{
+            border: 1px black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>each</h1>
+    </header>
+    <div id="container">
+        <table>
+            <tr>
+                <td>11</td>
+                <td>11</td>
+                <td>11</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>11</td>
+                <td>11</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>11</td>
+                <td>11</td>
+                <td>11</td>
+            </tr>
+        </table>
+        <hr>
+        <button id="btn" data-age='37' data-team='Lakers' data-name="Leborn-James">Leborn-James</button>
+        <button id="btn" data-age='31' data-team='SUNS' data-name="Steve-Nash">Steve-Nash</button>
+        <div id='target'></div>
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $('button#btn').on('click',function(){
+                let age=$(this).data('age'),team=$(this).data('team'),name=$(this).data('name')
+                console.log(`${name}${age}${team}`)
+                $('#target').text(`${name} age is ${age} and team is ${team}`)
+            })
+
+
+            let arr2=[1,2,3,4,5,'6','7','8','9']
+            console.log($.inArray(1,arr2))
+            $.map(arr2,function(item,index){
+                return item*index
+                console.log(result)
+            })
+            result_grep =$.grep(arr2,function(item,index){
+                return(item%2==0)
+            })
+            console.log(result_grep)
+
+            let arr=['Nicolas','iii','EEIT128']
+            $.each(arr,function(index,val){
+                console.log(val)
+            })
+            let sum=0
+            $('td').each(function(){
+                sum+=Number($(this).text())
+            })
+            console.log("sum:"+sum)
+
+            let obj={name:"Nicolas",age:28}
+            let data=[
+                {
+                    'name':'Nicolas',
+                    'email':'nicolas@gmail.com',
+                    'phone':'0930111222'
+                },
+                {
+                    'name':'Nicolas1',
+                    'email':'nicolas@gmail.com',
+                    'phone':'0930111222'
+                },
+                {
+                    'name':'Nicolas2',
+                    'email':'nicolas@gmail.com',
+                    'phone':'0930111222'
+                }
+
+            ]
+            $.each(data,function(index,emps){
+                console.log(`${emps.name}`)
+            })
+        })
+    </script>
+    
+</body>
+</html>

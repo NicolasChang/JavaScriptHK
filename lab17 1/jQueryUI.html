@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Lab17</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/lab17/js/jquery-ui-1.12.1/jquery-ui.css">
+    <link rel="stylesheet" href="/lab17/js/lightbox2/lightbox2-2.11.3/dist/css/lightbox.css">
+    <link rel="stylesheet" href="/lab17/js/vegas/vegas.css">
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>jQuery UI</h1>
+    </header>
+    <div id="container">
+        <p>Date:<input type="text" id="datePicker"></p>
+        <hr>
+        <a href="/lab17 1/img/Jimmy.jpg" data-lightbox="lightbox1"><img src="/lab17 1/img/Jimmy.jpg"></a>
+        <a href="/lab17 1/img/T1.jpg" data-lightbox="lightbox1"><img src="/lab17 1/img/T1.jpg"></a>
+        <a href="/lab17 1/img/大G.jpeg" data-lightbox="lightbox1"><img src="/lab17 1/img/大G.jpeg"></a>
+        <a href="/lab17 1/img/美.jpg" data-lightbox="lightbox2"><img src="/lab17 1/img/美.jpg"></a>
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script src="/lab17/js/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="/lab17/js/lightbox2/lightbox2-2.11.3/dist/js/lightbox.js"></script>
+    <script src="/lab17/js/vegas/vegas.js"></script>
+    <script>
+        $(function () {
+            $("#example, body").vegas({
+                delay:'1000',
+                transition: [ 'fade', 'zoomOut', 'swirlLeft' ],
+                slides: [
+                    { src: "/lab17 1/img/Jimmy.jpg" },
+                    { src: "/lab17 1/img/T1.jpg" },
+                    { src: "/lab17 1/img/大G.jpeg" },
+                    { src: "/lab17 1/img/美.jpg" }
+                ]
+            });
+            $('#datePicker').datepicker();
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true
+            })
+        })
+    </script>
+</body>
+
+</html>

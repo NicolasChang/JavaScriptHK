@@ -1,0 +1,15 @@
+div{
+    width: 30%;
+    height: 500px;
+    background-color: antiquewhite;
+    cursor: url(KK.png),auto;
+}
+p{
+    height: 30%;
+    background-color: aqua;
+    font-size: large;
+}
+H1{
+    border: 3px solid darkred;
+    font-family: initial;
+}

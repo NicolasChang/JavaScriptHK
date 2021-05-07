@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>jQuery On Event</h1>
+    </header>
+    <div id="container">
+        <button id="btn">Button</button>
+        <hr>
+        <button id="sayHello">Hello</button>
+        <button id="on">on</button>
+        <button id="off">off</button>
+        <button id="one">one</button>
+        <hr>
+        <button id="add">one</button>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+        </ul>
+
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $('#add').on('click',function(){
+                $('ul').append('<li>Item'+i+'</li>')
+                i++
+            })
+            $('li').on('click',function(){
+                console.log('132')
+            })
+
+            $('ul').on('click','li',function(){
+                let content=$(this).text()
+                console.log(content)
+            })
+
+            let sayHello=function(){
+                console.log('Hello')
+            }
+            $('#on').on('click',function(){
+                console.log('on')
+                $('#sayHello').on('click',sayHello)
+            })
+            $('#off').on('click',function(){
+                console.log('off')
+                $('#sayHello').on('click',sayHello)
+            })
+            $('#one').on('click',function(){
+                console.log('one')
+                // $('#sayHello').on('click',sayHello)
+            })
+
+            // $('#btn').on("click mouseenter mouseleave",function(){
+            //     console.log('123')
+            // })
+            $('#btn').on({
+                click:function(){
+                    console.log('click')
+                },dblclick:function(){
+                    console.log('double click')
+                },contextmenu:function(){
+                    console.log('right click')
+                }
+            })
+
+        })
+    </script>
+    
+</body>
+</html>
